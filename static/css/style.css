@@ -7,9 +7,25 @@ body {
     text-align: center;
     color: #4B0082;
 }
+.teamImg {
+    width: 125px;          
+    height: auto;         
+    position: absolute;   
+    top: 20px;            
+    right: 20px;          
+    border-radius: 10px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
 
 .container {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 239, 150, 0.50);
     border-radius: 15px;
     padding: 20px;
     width: 50%;
@@ -30,6 +46,28 @@ body {
     cursor: pointer;
     padding: 15px 25px; 
 }
+.music-btn:hover {
+    background-color: #9966ff; /* Darker red on hover */
+}
+/* Pause music button */
+#pauseMusicButton {
+    background-color:#8A2BE2 ;
+    position: absolute;
+    top: 56px;
+    left: 170px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+#pauseMusicButton:hover {
+    background-color: #e53935; 
+}
+
+
 .joke-btn {
     position: absolute;
     top: 120px;
@@ -41,6 +79,9 @@ body {
     border-radius: 50%;
     cursor: pointer;
     padding: 15px 25px; 
+}
+.joke-btn:hover {
+    background-color: #9966ff; 
 }
 .excercise-btn {
     position: absolute;
@@ -54,7 +95,9 @@ body {
     cursor: pointer;
     padding: 15px 25px; 
 }
-
+.excercise-btn:hover {
+    background-color: #9966ff; 
+}
 input[type="text"] {
     width: 70%;
     padding: 10px;
@@ -70,28 +113,40 @@ button {
     border: none;
 }
 
+button:hover{
+    background-color: #9966ff; 
+}
+
 .chat-history {
     margin-top: 20px;
     text-align: left;
+    
 }
 
 .chat-bubble {
     border-radius: 15px;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #d3d3d3;
+    border: 1px solid #ffef96;
     font-size: 16px;
     word-wrap: break-word;
+    
 }
 
 .user-bubble {
-    background-color: #4CAF50;
+    background-color:  rgb(52, 5, 110);
+    color: white;
     text-align: right;
+    opacity: 0.8;
+    
 }
 
 .gem-bubble {
-    background-color: #2196F3;
+    background-color: rgb(255, 255, 255);
+    color: rgb(52, 5, 110);
+    font-weight: bold;
     text-align: left;
+    opacity: 0.8;
 }
 
 
@@ -148,7 +203,7 @@ button {
     margin-top: 80px;
     margin-left: 200px;
     padding: 15px;
-    background-color: #ffffff;
+    background-color: #ffef96;
     border: 1px solid #007bff;
     border-radius: 8px;
     width: 250px;
@@ -167,7 +222,7 @@ button {
     margin-top: 80px;
     margin-left: 200px;
     padding: 15px;
-    background-color: #ffffff;
+    background-color: #ffef96;
     border: 1px solid #007bff;
     border-radius: 8px;
     width: 250px;
