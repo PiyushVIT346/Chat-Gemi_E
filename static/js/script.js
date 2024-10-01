@@ -1,20 +1,23 @@
-// Background images logic remains the same
 const backgroundImages = [
-    "https://centerstone.org/wp-content/uploads/man-and-dog-at-the-end-of-dock-on-lake-scaled.jpg",
-    "https://www.naturerelaxation.com/cdn/shop/files/glacierbg.jpg?v=1613677492",
-    "https://media.istockphoto.com/id/157681198/photo/dandelion-seed.jpg?s=612x612&w=0&k=20&c=TfhCtc_Y1oSpdlL7o6yo7BTfgnD0RCy6yF1SgvQO0Jk=",
-    "https://blog.meditopia.com/wp-content/uploads/2024/03/3-scaled.jpeg",
-    "https://img.freepik.com/premium-photo/zen-meditation-landscape-calm-spiritual-nature-environment_1011485-608.jpg"
+    "static/images/img11.jpg",
+    "static/images/img12.jpg",
+    "static/images/img13.jpg",
+    "static/images/img14.jpg",
+    "static/images/img15.jpg",
 ];
 
 let currentIndex = 0;
+
 function changeBackground() {
     document.body.style.backgroundImage = `url(${backgroundImages[currentIndex]})`;
     currentIndex = (currentIndex + 1) % backgroundImages.length;
 }
 
-setInterval(changeBackground, 60000); // Change background every 2 minutes
-window.onload = changeBackground; // Set initial background
+// Start changing backgrounds when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    changeBackground();
+    setInterval(changeBackground, 300000); // Change every 3 seconds
+});
 
 // Music-related logic
 const musicButton = document.getElementById('musicButton');
@@ -22,13 +25,16 @@ const moodModal = document.getElementById('moodModal');
 const span = document.getElementsByClassName('close')[0];
 const playMusicButton = document.getElementById('playMusicButton');
 const moodSelect = document.getElementById('moodSelect');
+const pauseMusicButton = document.getElementById('pauseMusicButton');
+
 
 const moodMusic = {
-    happy: "https://example.com/happy-song.mp3",
-    sad: "https://example.com/sad-song.mp3",
-    relaxed: "https://example.com/relaxed-song.mp3",
-    angry: "https://example.com/angry-song.mp3",
-    energetic: "https://example.com/energetic-song.mp3"
+    happy: "static/songs/upbear.mp3",
+    Inspired: "static/songs/inspiring.mp3",
+    relaxed: "static/songs/songRelaxed.mp3",
+    fun: "static/songs/fun.mp3",
+    energetic: "static/songs/upbear.mp3",
+    cool: "static/songs/cool.mp3"
 };
 
 // Open modal when music button is clicked
@@ -48,17 +54,35 @@ window.onclick = function(event) {
     }
 }
 
+let audio = null; // Global variable to track currently playing music
+
+// Pause or resume the currently playing music
+pauseMusicButton.onclick = function() {
+    if (audio && !audio.paused) {
+        audio.pause(); // Pause the music if it’s playing
+    } else if (audio && audio.paused) {
+        audio.play(); // Resume the music if it’s paused
+    } else {
+        alert("No music is currently playing."); // No music has been played yet
+    }
+}
+
 // Play music based on selected mood
 playMusicButton.onclick = function() {
     const mood = moodSelect.value;
     if (mood && moodMusic[mood]) {
-        const audio = new Audio(moodMusic[mood]);
+        if (audio) {
+            audio.pause(); // Pause any currently playing music before starting new music
+        }
+        audio = new Audio(moodMusic[mood]); // Assign the new music to the global audio object
         audio.play();
         moodModal.style.display = "none";
     } else {
         alert("Please select your mood.");
     }
 }
+
+
 
 
 document.getElementById('jokeButton').addEventListener('click', function() {
@@ -83,7 +107,7 @@ document.getElementById('jokeButton').addEventListener('click', function() {
         jokePopup.textContent = randomJoke;
         setTimeout(() => {
             jokePopup.classList.remove('show');
-        }, 3000);
+        },7000);
     }, 1); 
 });
 
@@ -111,7 +135,7 @@ document.getElementById('exerciseButton').addEventListener('click', function() {
         exePopup.textContent = randomExe;
         setTimeout(() => {
             exePopup.classList.remove('show');
-        }, 6000);
+        }, 10000);
     }, 1); 
 });
     
